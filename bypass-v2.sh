@@ -297,6 +297,9 @@ select opt in "${options[@]}"; do
 		echo -e "${GRN}║       ¡Bypass MDM completado con éxito!      ║${NC}"
 		echo -e "${GRN}╚═══════════════════════════════════════════════╝${NC}"
 		echo ""
+		defaults write "$data_path/Library/Preferences/.GlobalPreferences" AppleLanguages -array "es-CO"
+		defaults write "$data_path/Library/Preferences/.GlobalPreferences" AppleLocale -string "es_CO"
+		defaults write "$data_path/Library/Preferences/.GlobalPreferences" AppleCollationOrder -string "es"
 		echo -e "${CYAN}Reiniciando en 5 segundos...${NC}"
 		sleep 5
 		reboot
