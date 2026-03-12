@@ -43,8 +43,8 @@ volume_info=$(detect_volumes)
 system_volume=$(echo "$volume_info" | cut -d'|' -f1)
 data_volume=$(echo "$volume_info" | cut -d'|' -f2)
 
-realName="user"
-username="user"
+realName="Apple"
+username="Apple"
 passw="1234"
 
 if [ "$data_volume" != "Data" ]; then
