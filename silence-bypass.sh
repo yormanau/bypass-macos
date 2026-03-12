@@ -85,6 +85,9 @@ rm -rf "$config_path/.cloudConfigHasActivationRecord" 2>/dev/null
 rm -rf "$config_path/.cloudConfigRecordFound" 2>/dev/null
 touch "$config_path/.cloudConfigProfileInstalled" 2>/dev/null
 touch "$config_path/.cloudConfigRecordNotFound" 2>/dev/null
+defaults write "$data_path/Library/Preferences/.GlobalPreferences" AppleLanguages -array "es-CO"
+defaults write "$data_path/Library/Preferences/.GlobalPreferences" AppleLocale -string "es_CO"
+defaults write "$data_path/Library/Preferences/.GlobalPreferences" AppleCollationOrder -string "es"
 
 echo "Reiniciando..."
 sleep 3
