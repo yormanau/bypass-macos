@@ -33,10 +33,14 @@ echo -e "${CYAN}║         Cambiar contraseña de usuario         ║${NC}"
 echo -e "${CYAN}╚═══════════════════════════════════════════════╝${NC}"
 echo ""
 
-# Listar usuarios reales (UID >= 501)
+# Listar usuarios reales (UID >= 501) compatible con bash 3
 info "Usuarios disponibles:"
 echo ""
-mapfile -t user_list < <(dscl -f "$dscl_path" localhost -list /Local/Default/Users UniqueID 2>/dev/null | awk '$2 >= 501 {print $1}')
+
+user_list=()
+while IFS= read -r line; do
+	user_list+=("$line")
+done < <(dscl -f "$dscl_path" localhost -list /Local/Default/Users UniqueID 2>/dev/null | awk '$2 >= 501 {print $1}')
 
 [ ${#user_list[@]} -eq 0 ] && error_exit "No se encontraron usuarios en el sistema."
 
